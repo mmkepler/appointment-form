@@ -1,3 +1,49 @@
 .App {
   text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+ text-align: center;
+ font-size: 1.3em;
+ background: white;
+ border-bottom: solid 1px gray;
+ display: flex;
+ justify-content: center;
+
+ padding: 10px;
+ margin-bottom: 40px;
+}
+
+ul {
+  list-style: none;
+  display: inline-flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 80%;
+}
+
+.block {
+  border-radius: 4px;
+  background-color: white;
+  border: 2px solid gray;
+  list-style-type: none;
+  margin: 20px;
+  padding: 20px;
+  min-width: 120px;
+  height: auto;
+  font-size: 1.2em;
+}
+
+.block-taken {
+  border-radius: 4px;
+  background-color: red;
+  border: 2px solid gray;
+  list-style-type: none;
+  margin: 20px;
+  padding: 10px;
+  width: 100px;
+  height: 80px;
+  font-size: 1.5em;
 }
