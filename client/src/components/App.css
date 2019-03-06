@@ -46,10 +46,10 @@ ul {
   border: 2px solid gray;
   list-style-type: none;
   margin: 20px;
-  padding: 10px;
-  width: 100px;
-  height: 80px;
-  font-size: 1.5em;
+  padding: 20px;
+  min-width: 120px;
+  height: auto;
+  font-size: 1.2em;
 }
 
 /* Modal */
@@ -93,6 +93,7 @@ input {
   margin-top: 10px;
   margin-bottom: 30px;
   width: 200px;
+  padding: 8px;
 }
 
 .submit-button {
