@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Calendar from './Calendar';
+import Modal from './Modal';
 
 class App extends Component {
   render() {
@@ -9,7 +10,7 @@ class App extends Component {
         <header className="header">
           <h1>Today's Appointments</h1>
         </header>
-        <Calendar />
+        <Modal />
       </div>
     );
   }
