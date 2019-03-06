@@ -78,10 +78,25 @@ right: 0;
 
 }
 
+#close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+#close button {
+  padding: 6px;
+  border-radius: 4px;
+}
 
 input {
   height: 2.4em;
   margin-top: 10px;
   margin-bottom: 30px;
   width: 200px;
+}
+
+.submit-button {
+  font-size: 1.2em;
+  padding: 8px;
+  border-radius: 4px;
 }
