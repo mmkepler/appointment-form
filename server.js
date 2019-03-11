@@ -1,20 +1,73 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 const path = require('path');
-import axios from 'axios';
+const axios = require('axios');
 
-app.use(express.static(path.join(__dirname, "client","build")));
+const initialState = {
+  modal_visible: false,
+  id: '',
+  fname: '',
+  lname: '',
+  phone: '',
+  appointments: [
+    {
+      id: 'nine',
+      fname: '',
+      lname: '',
+      phone: ''
+    },
+    {
+      id: 'ten',
+      fname: '',
+      lname: '',
+      phone: ''
+    },
+    {
+      id: 'eleven',
+      fname: '',
+      lname: '',
+      phone: ''
+    },
+    {
+      id: 'twelve',
+      fname: '',
+      lname: '',
+      phone: ''
+    },
+    {
+      id: 'one',
+      fname: '',
+      lname: '',
+      phone: ''
+    },
+    {
+      id: 'two',
+      fname: '',
+      lname: '',
+      phone: ''
+    },
+    {
+      id: 'three',
+      fname: '',
+      lname: '',
+      phone: ''
+    },
+    {
+      id: 'four',
+      fname: '',
+      lname: '',
+      phone: ''
+    }
+  ]
+};
 
 
-/* If this was a fully functioning app these items would be included
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-a way to recieve post data from the front end to send to the database
-
-a way to retrieve data from the database and send it to the front end
-
-There would also be models for the data
-
-*/
+//This simulates a call to a database, sending the initialState object instead
+app.get('/store', (req, res) => {
+  res.send(initialState);
+});
 
 const port = process.env.PORT || 5002;
 app.listen(port, () => {

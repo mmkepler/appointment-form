@@ -14,8 +14,7 @@
   "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node server.js"
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "author": "Melissa Kepler",
   "license": "ISC"

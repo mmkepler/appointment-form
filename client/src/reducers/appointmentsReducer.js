@@ -1,7 +1,7 @@
-import initialState from './initialState';
-import { MODAL_OPEN, MODAL_CLOSE, UPDATE_FIELDS, SUBMIT } from '../actions/formActions';
+//import initialState from './initialState';
+import { MODAL_OPEN, MODAL_CLOSE, UPDATE_FIELDS, SUBMIT, LOAD_INITIAL } from '../actions/formActions';
 
-const appointmentsReducer = (state = initialState, action) => {
+const appointmentsReducer = (state = [], action) => {
   switch(action.type) {
     case MODAL_OPEN: {
       console.log("try" , action.payload);
@@ -42,6 +42,13 @@ const appointmentsReducer = (state = initialState, action) => {
         fname: '',
         lname: '',
         phone: ''
+      }
+    }
+    case LOAD_INITIAL: {
+      console.log("LoadInitial ", action.payload);
+      return {
+        ...state,
+        ...action.payload
       }
     }
   default:

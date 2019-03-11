@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { MODAL_OPEN, MODAL_CLOSE, UPDATE_FIELDS, SUBMIT } from '../actions/formActions';
+import { MODAL_OPEN, MODAL_CLOSE, UPDATE_FIELDS, SUBMIT, LOAD_INITIAL } from '../actions/formActions';
+import axios from 'axios';
 
 
 class App extends Component {
-   
+   componentDidMount() {
+    axios.get('/store')
+    .then(res => {
+      console.log("res ", res.data);
+      this.props.loadInitial(res.data);
+    })
+    .catch(err => console.log("err ", err))
+   }
  
   render() {
 
@@ -97,7 +105,6 @@ class App extends Component {
 
 const mapStateToProps = (store) => {
   return {
-    temp: store.appointmentsReducer.temp,
     modal_visible: store.appointmentsReducer.modal_visible,
     id: store.appointmentsReducer.id,
     fname: store.appointmentsReducer.fname,
@@ -119,6 +126,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   submit: (obj) => {
     dispatch({type: SUBMIT, payload: obj});
+  },
+  loadInitial: (data) => {
+    dispatch({type: LOAD_INITIAL, payload: data});
   }
 });
 
