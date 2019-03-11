@@ -1,5 +1,0 @@
-export const FETCH_USER_DATA = 'FETCH_USER_DATA';
-export const OPEN_MODAL = 'OPEN_MODAL';
-export const CLOSE_MODAL = 'CLOSE_MODAL';
-export const CLEAR_ENTRY = 'CLEAR_ENTRY';
-export const UPDATE_APPOINTMENT_DATA = 'UPDATE_APPOINTMENT_DATA';

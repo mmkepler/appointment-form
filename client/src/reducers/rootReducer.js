@@ -1,26 +1,10 @@
-const initialState = {
-  module_visible: false,
-  current: null,
-  current_data: null,
-  id: null,
-  fname: null,
-  lname: null,
-  phone: null,
-  appointments: [
-    {id: 'nine'},
-    {id: 'ten'},
-    {id: 'eleven'},
-    {id: 'tweleve'},
-    {id: 'one'},
-    {id: 'two'},
-    {id: 'three'},
-    {id: 'four'}
-  ]
-};
+import { combineReducers } from 'redux';
+import appointmentsReducer from './appointmentsReducer';
+import { reducer as formReducer } from 'redux-form'
 
+const rootReducer = combineReducers({
+  appointmentsReducer: appointmentsReducer,
+  form: formReducer
+});
 
-const rootReducter = (state = initialState, action) => {
-  return state;
-};
-
-export default rootReducter;
+export default rootReducer;

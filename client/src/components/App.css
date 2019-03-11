@@ -33,9 +33,9 @@ ul {
   background-color: white;
   border: 2px solid gray;
   list-style-type: none;
-  margin: 20px;
+  margin: 16px;
   padding: 20px;
-  min-width: 120px;
+  width: 200px;
   height: auto;
   font-size: 1.2em;
 }
@@ -45,9 +45,9 @@ ul {
   background-color: red;
   border: 2px solid gray;
   list-style-type: none;
-  margin: 20px;
+  margin: 16px;
   padding: 20px;
-  min-width: 120px;
+  width: 200px;
   height: auto;
   font-size: 1.2em;
 }
