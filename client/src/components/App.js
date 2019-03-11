@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { MODAL_OPEN, MODAL_CLOSE, UPDATE_FIELDS, SUBMIT, LOAD_INITIAL } from '../actions/formActions';
+import { MODAL_OPEN, MODAL_CLOSE, UPDATE_FIELDS, SUBMIT, LOAD_INITIAL, POST_APPOINTMENTS } from '../actions/formActions';
 import axios from 'axios';
 
 
@@ -9,7 +9,6 @@ class App extends Component {
    componentDidMount() {
     axios.get('/store')
     .then(res => {
-      console.log("res ", res.data);
       this.props.loadInitial(res.data);
     })
     .catch(err => console.log("err ", err))
@@ -20,11 +19,9 @@ class App extends Component {
     //send correct data to reducer for modal open
     const findData = (e) => {
       let tempId = e.target.id;
-      console.log("experiment ", tempId);
       let tempArr = this.props.appointments;
       for(let i = 0; i < tempArr.length; i++) {
         if(tempArr[i].id === tempId){
-          console.log("experiment ", tempArr[i]);
           this.props.onPress({
             id: e.target.id,
             fname: tempArr[i].fname,
@@ -45,16 +42,33 @@ class App extends Component {
           appArr[i].fname = this.props.fname;
           appArr[i].lname = this.props.lname;
           appArr[i].phone = this.props.phone;
-          console.log("appArr ", appArr);
+          //turns blocks that contain data red
           let block = document.getElementById(this.props.id);
           block.parentElement.classList.add('block-taken');
           block.parentElement.classList.remove('block');
-          this.props.submit(appArr)
+          //sends data to the appartments array in state
+          this.props.submit(appArr);
+
+          let newObj = {
+            id: this.props.id,
+            fname: this.props.fname,
+            lname: this.props.lname,
+            phone: this.props.phone,
+            appointments: this.props.appointments
+          };
+      
+          axios.post('/appointments', {...newObj})
+          .then(res => {
+            //response from the sever to ensure the data was recieved
+            //console.log('response from post ', res);
+          })
+          .catch(err => {
+            console.log('error posting ', err);
+          });
         }
       }
     }
 
-   console.log("props in app" , this.props);
     return (
       <div className="App">
         <header className="header">
@@ -129,6 +143,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   loadInitial: (data) => {
     dispatch({type: LOAD_INITIAL, payload: data});
+  },
+  postAppointments: (apps) => {
+    dispatch({type: POST_APPOINTMENTS, payload: apps});
   }
 });
 

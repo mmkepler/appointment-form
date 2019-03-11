@@ -1,10 +1,8 @@
-//import initialState from './initialState';
-import { MODAL_OPEN, MODAL_CLOSE, UPDATE_FIELDS, SUBMIT, LOAD_INITIAL } from '../actions/formActions';
+import { MODAL_OPEN, MODAL_CLOSE, UPDATE_FIELDS, SUBMIT, LOAD_INITIAL, POST_APPOINTMENTS  } from '../actions/formActions';
 
 const appointmentsReducer = (state = [], action) => {
   switch(action.type) {
     case MODAL_OPEN: {
-      console.log("try" , action.payload);
       return {
         ...state,
         modal_visible: !state.modal_visible,
@@ -15,7 +13,6 @@ const appointmentsReducer = (state = [], action) => {
       }
     }
     case MODAL_CLOSE: {
-      //console.log('Inside Modal Toggle');
       return {
         ...state,
         modal_visible: !state.modal_visible,
@@ -26,14 +23,12 @@ const appointmentsReducer = (state = [], action) => {
       }
     }
     case UPDATE_FIELDS: {
-      console.log("inside modal Reducer update fields ", action.payload.target.value);
       return {
         ...state,
         [action.payload.target.name]: action.payload.target.value
       }
     }
     case SUBMIT: {
-      console.log('insubmit ', action.payload);
       return {
         ...state,
         appointments: action.payload,
@@ -45,12 +40,13 @@ const appointmentsReducer = (state = [], action) => {
       }
     }
     case LOAD_INITIAL: {
-      console.log("LoadInitial ", action.payload);
       return {
         ...state,
         ...action.payload
       }
     }
+    case POST_APPOINTMENTS: 
+    return state;
   default:
     return state;
   }
